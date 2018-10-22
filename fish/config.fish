@@ -33,11 +33,18 @@ function setFirstAvailablePath --description 'Set a variable to the first availa
 end
 
 ################################################################################
+set PATH $HOME/local/src/fulcrum/dev-tools/bin $PATH
+set PATH $HOME/.cargo/bin $PATH
 # Environment variables / Path
 
 # PWD bin
-set PATH $PATH ./bin
-set PATH $PATH ./node_modules/.bin
+addPath PATH ./bin $PATH
+addPath PATH ./node_modules/.bin/ $PATH
+
+# Fulcrum tools
+if test -d "$HOME/local/src/fulcrum/dev-tools/bin"
+  addPath PATH $HOME/local/src/fulcrum/dev-tools/bin $PATH
+end
 
 # Dotfiles bin
 addPath (dirname (status -f))"/../bin"
@@ -114,3 +121,4 @@ abbr ip 'ifconfig | grep "inet " | grep -v 127.0.0.1'
 if test -f "$HOME/.config/fish/custom.fish"
   source "$HOME/.config/fish/custom.fish"
 end
+
