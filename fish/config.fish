@@ -7,6 +7,8 @@ end
 
 ################################################################################
 # PATHS
+set PATH $HOME/local/src/fulcrum/dev-tools/bin $PATH
+set PATH $HOME/.cargo/bin $PATH
 
 # PWD bin
 set PATH ./bin $PATH
@@ -20,6 +22,7 @@ end
 # Dotfiles bin
 set PATH (dirname (status -f))"/../bin" $PATH
 set PATH $HOME/local/bin $PATH
+set PATH ./bin $PATH
 
 # Homebrew bin
 set PATH /usr/local/sbin $PATH
