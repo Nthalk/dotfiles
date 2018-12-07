@@ -35,6 +35,7 @@ end
 ################################################################################
 set PATH $HOME/local/src/fulcrum/dev-tools/bin $PATH
 set PATH $HOME/.cargo/bin $PATH
+
 # Environment variables / Path
 
 # PWD bin
@@ -53,6 +54,9 @@ addPath $HOME/local/bin
 # Homebrew bin
 addPath /usr/local/sbin
 addPath /usr/local/bin
+
+# Gradle
+set -x GRADLE_HOME /usr/local/bin
 
 # Android
 setFirstAvailablePath ANDROID_HOME $HOME/Library/Android/sdk /usr/local/share/android-sdk
