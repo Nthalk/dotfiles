@@ -9,6 +9,8 @@ end
 # PATHS
 set PATH $HOME/local/src/fulcrum/dev-tools/bin $PATH
 set PATH $HOME/.cargo/bin $PATH
+set PATH $HOME/Library/Android/sdk/platform-tools $PATH
+set PATH $HOME/go/bin $PATH
 
 # PWD bin
 set PATH ./bin $PATH
@@ -28,8 +30,11 @@ set PATH ./bin $PATH
 set PATH /usr/local/sbin $PATH
 set PATH /usr/local/bin $PATH
 
+# Gradle
+set -x GRADLE_HOME /usr/local/bin
+
 # Android
-set -x ANDROID_HOME /usr/local/share/android-sdk
+set -x ANDROID_HOME ~/Library/Android/sdk
 if test -d "$ANDROID_HOME/tools/bin"
   set PATH "$ANDROID_HOME/tools/bin" $PATH
   set PATH "$ANDROID_HOME/platform-tools" $PATH
@@ -39,6 +44,9 @@ set -x ANDROID_NDK_HOME /usr/local/share/android-sdk/ndk-bundle
 if test -d "$ANDROID_NDK_HOME"
   set PATH "$ANDROID_NDK_HOME" $PATH
 end
+
+# GOPATH
+set -x GOPATH ~/go
 
 # Scala sbt opts
 set -x SBT_OPTS "-Xms512M -Xmx2G -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
