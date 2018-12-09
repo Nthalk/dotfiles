@@ -66,6 +66,3 @@ else
 fi
 
 load $HOME/.gitignore $DOTDIR/gitignore
-
-echo "Loading submodules"
-git submodule update --init
