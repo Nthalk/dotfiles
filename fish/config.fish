@@ -28,11 +28,7 @@ end
 
 
 ################################################################################
-# PATHS
-set PATH $HOME/local/src/fulcrum/dev-tools/bin $PATH
-set PATH $HOME/.cargo/bin $PATH
-set PATH $HOME/Library/Android/sdk/platform-tools $PATH
-set PATH $HOME/go/bin $PATH
+# Environment variables
 
 # PWD bin
 set PATH ./bin $PATH
@@ -46,14 +42,11 @@ end
 # Dotfiles bin
 set PATH (dirname (status -f))"/../bin" $PATH
 set PATH $HOME/local/bin $PATH
-set PATH ./bin $PATH
 
 # Homebrew bin
 set PATH /usr/local/sbin $PATH
 set PATH /usr/local/bin $PATH
 
-# Gradle
-set -x GRADLE_HOME /usr/local/bin
 
 # Android
 set -x ANDROID_HOME ~/Library/Android/sdk
@@ -67,11 +60,22 @@ if test -d "$ANDROID_NDK_HOME"
   set PATH "$ANDROID_NDK_HOME" $PATH
 end
 
-# GOPATH
-set -x GOPATH ~/local/src/twick00/go
+set -x GIT_SSH git-ssh
 
 # Scala sbt opts
 set -x SBT_OPTS "-Xms512M -Xmx2G -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
+
+# GOPATH
+#set -x GOPATH ~/local/src/twick00/go
+
+# Gradle
+#set -x GRADLE_HOME /usr/local/bin
+
+# PATHS
+#set PATH $HOME/local/src/fulcrum/dev-tools/bin $PATH
+#set PATH $HOME/.cargo/bin $PATH
+#set PATH $HOME/Library/Android/sdk/platform-tools $PATH
+#set PATH $HOME/go/bin $PATH
 
 # Clear extra PATH variables
 varclear PATH
@@ -83,9 +87,7 @@ set CFLAGS '-I$HOME/local/include'
 set LDFLAGS '-L$HOME/local/lib'
 
 ################################################################################
-# Environment variables
-
-set -x GIT_SSH git-ssh
+# Misc.
 
 # Use vim as the default editor
 if type vim 1>/dev/null
@@ -123,7 +125,11 @@ abbr droid 'adb shell input text'
 # Maven
 abbr mvn-resolve 'mvn -q org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate -Dexpression='
 
+# Misc. Productivity
+abbr work 'cd ~/local/src/'
+abbr port 'lsof -i tcp:'
+abbr ip 'ifconfig | grep "inet " | grep -v 127.0.0.1'
+
 if test -f .config/fish/custom.fish
   source .config/fish/custom.fish
 end
-
