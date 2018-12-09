@@ -4,8 +4,38 @@ function cd --description "Change working directory"
   emit cwd
 end
 
+# Increment Helper Function
+#
+function inc --description 'Increase the value of variable' --no-scope-shadowing
+    set $argv[1](expr $$argv[1] + 1)
+end
+
+# Env Remove Duplicates From Path
+function varclear --description 'Remove duplicates from environment variable'
+    if test (count $argv) = 1
+        set -l newvar
+        set -l count 0
+        for v in $$argv
+            if contains -- $v $newvar
+                inc count
+            else
+                set newvar $newvar $v
+            end
+        end
+        set $argv $newvar
+        test $count -gt 0
+        and echo Removed $count duplicates from $argv
+    else
+        for a in $argv
+            varclear $a
+        end
+    end
+end
+
 
 ################################################################################
+# Clear PATH
+
 # PATHS
 set PATH $HOME/local/src/fulcrum/dev-tools/bin $PATH
 set PATH $HOME/.cargo/bin $PATH
@@ -46,7 +76,7 @@ if test -d "$ANDROID_NDK_HOME"
 end
 
 # GOPATH
-set -x GOPATH ~/go
+set -x GOPATH ~/local/src/twick00/go
 
 # Scala sbt opts
 set -x SBT_OPTS "-Xms512M -Xmx2G -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
