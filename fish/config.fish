@@ -38,6 +38,10 @@ set PATH ./node_modules/.bin/ $PATH
 if test -d "$HOME/local/src/fulcrum/dev-tools/bin"
   set PATH $HOME/local/src/fulcrum/dev-tools/bin $PATH
 end
+if test -d "$HOME/local/src/fulcrum/vm/bin"
+  set PATH $HOME/local/src/fulcrum/vm/bin $PATH
+  set -x VAGRANT_CWD $HOME/local/src/fulcrum/vm
+end
 
 # Dotfiles bin
 set PATH (dirname (status -f))"/../bin" $PATH
@@ -46,7 +50,6 @@ set PATH $HOME/local/bin $PATH
 # Homebrew bin
 set PATH /usr/local/sbin $PATH
 set PATH /usr/local/bin $PATH
-
 
 # Android
 set -x ANDROID_HOME ~/Library/Android/sdk
@@ -130,6 +133,6 @@ abbr work 'cd ~/local/src/'
 abbr port 'lsof -i tcp:'
 abbr ip 'ifconfig | grep "inet " | grep -v 127.0.0.1'
 
-if test -f .config/fish/custom.fish
-  source .config/fish/custom.fish
+if test -f ~/.config/fish/custom.fish
+  source ~/.config/fish/custom.fish
 end
