@@ -66,19 +66,3 @@ else
 fi
 
 load $HOME/.gitignore $DOTDIR/gitignore
-
-unameOut="$(uname -s)"
-case "${unameOut}" in
-    Linux*)     machine=Linux;;
-    Darwin*)    machine=Mac;;
-    CYGWIN*)    machine=Cygwin;;
-    MINGW*)     machine=MinGw;;
-    *)          machine="UNKNOWN:${unameOut}"
-esac
-if machine=Mac; then
-    # do a thing if on a mac
-    echo "Hey, you're on a Mac!"
-else
-    # do a thing if not on a mac (linux)
-    echo "Hey, you're not on a Mac!"
-fi
