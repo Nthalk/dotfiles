@@ -1,0 +1,14 @@
+[Unit]
+Description=Keymapping service for keyszer
+
+[Service]
+Environment='DISPLAY=:1'
+User=keymapper
+Group=keymapper
+ExecStart=/home/keymapper/.local/bin/keyszer -w
+Restart=always
+Type=simple
+RestartSec=10
+
+[Install]
+WantedBy=graphical.target

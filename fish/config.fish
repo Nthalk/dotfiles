@@ -42,6 +42,7 @@ set PATH ./node_modules/.bin $PATH
 # Dotfiles bin
 addPath (dirname (status -f))"/../bin"
 addPath $HOME/local/bin
+addPath $HOME/.local/bin
 
 # Homebrew bin
 addPath /usr/local/sbin
